@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: inkwell-blog
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/posts
+    envVars:
+      - key: NODE_VERSION
+        value: 24.12.0

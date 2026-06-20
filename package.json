@@ -1,0 +1,15 @@
+{
+  "name": "inkwell-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A full-stack blogging platform with authentication, posts, and comments.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Inkwell — a community blogging platform." />
+    <title>Inkwell — Stories worth sharing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button class="brand" data-action="home" aria-label="Inkwell home">
+        <span class="brand-mark">I</span>
+        <span>Inkwell</span>
+      </button>
+      <nav id="nav-actions" aria-label="Main navigation"></nav>
+    </header>
+
+    <main id="app">
+      <section class="hero">
+        <p class="eyebrow">A place for thoughtful writing</p>
+        <h1>Ideas become meaningful<br />when they’re <em>shared.</em></h1>
+        <p class="hero-copy">Read perspectives from curious people, join the conversation, or publish something of your own.</p>
+        <div class="hero-actions">
+          <button class="button primary" data-action="start-writing">Start writing</button>
+          <button class="button text-button" data-action="explore">Explore stories <span>↓</span></button>
+        </div>
+      </section>
+
+      <section class="feed" id="stories">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Latest from the community</p>
+            <h2>Recent stories</h2>
+          </div>
+          <span id="story-count" class="story-count"></span>
+        </div>
+        <div id="post-list" class="post-list">
+          <div class="loading">Loading stories…</div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-root"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <template id="auth-template">
+      <div class="modal-backdrop" data-action="close-modal">
+        <section class="modal auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+          <button class="icon-button close" data-action="close-modal" aria-label="Close">×</button>
+          <div class="modal-brand"><span class="brand-mark">I</span></div>
+          <p class="eyebrow">Welcome to Inkwell</p>
+          <h2 id="auth-title">Sign in to continue</h2>
+          <p class="muted" id="auth-subtitle">Join the conversation and share your ideas.</p>
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-auth-mode="login">Sign in</button>
+            <button class="auth-tab" data-auth-mode="register">Create account</button>
+          </div>
+          <form id="auth-form" class="stack-form">
+            <label id="name-field" class="hidden">Name<input name="name" autocomplete="name" /></label>
+            <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+            <label>Password<input name="password" type="password" autocomplete="current-password" minlength="8" required /></label>
+            <p class="form-error" id="auth-error"></p>
+            <button class="button primary full" type="submit">Sign in</button>
+          </form>
+        </section>
+      </div>
+    </template>
+  </body>
+</html>
