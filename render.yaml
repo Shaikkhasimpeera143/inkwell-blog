@@ -5,7 +5,7 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /api/posts
+    healthCheckPath: /health
     envVars:
       - key: NODE_VERSION
         value: 24.12.0

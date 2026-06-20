@@ -15,6 +15,7 @@ const ROOT = fileURLToPath(new URL(".", import.meta.url));
 const PUBLIC_DIR = join(ROOT, "public");
 const DATA_DIR = join(ROOT, "data");
 const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || "0.0.0.0";
 const SESSION_DAYS = 14;
 
 await mkdir(DATA_DIR, { recursive: true });
@@ -372,6 +373,9 @@ async function serveStatic(res, pathname) {
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    if (url.pathname === "/health") {
+      return sendJson(res, 200, { status: "ok" });
+    }
     if (url.pathname.startsWith("/api/")) {
       await handleApi(req, res, url);
     } else {
@@ -383,6 +387,6 @@ const server = createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Inkwell is running at http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Inkwell is running at http://${HOST}:${PORT}`);
 });
